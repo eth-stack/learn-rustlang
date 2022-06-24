@@ -1,0 +1,39 @@
+#+title: Rust Example Learning
+#+author: NghiaTD
+#+date: <2022-06-21 T3>
+
+* Ownership
+
+#+begin_src rust
+fn main() {
+    let mut s = String::from("hello");
+    s.push_str(" world");
+
+    println!("{}", s);
+
+    let s1 = String::from("first");
+    let s2 = s1;
+    // println!("{}", s1); // Invalid code: borrow of moved value
+    //
+
+    take_ownership(s2);
+
+    // println!("{}", s2); // Error: borrow of moved value
+
+    let x = 4;
+    make_copy(x);
+
+    println!("{}", x); // Work well
+}
+
+
+fn take_ownership(str: String) {
+    println!("{}", str);
+}
+
+fn make_copy(i: i32) {
+    print!("{}", i);
+}
+#+end_src rust
+
+*
